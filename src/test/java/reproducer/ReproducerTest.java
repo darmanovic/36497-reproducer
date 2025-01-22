@@ -4,6 +4,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import reproducer.repos.DocumentRepository;
 import reproducer.resources.model.DocumentResponseNamed;
 import reproducer.resources.model.TempDocumentResponse;
@@ -14,7 +15,7 @@ class ReproducerTest {
     @Inject
     DocumentRepository repo;
 
-    @org.junit.jupiter.api.Test
+    @Test
     @Order(1)
     void expected() {
         var q = repo
@@ -28,7 +29,7 @@ class ReproducerTest {
         Assertions.assertEquals(data.size(), count);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     @Order(2)
     void reproducer1() {
         // Notice lack of "documentType" association name.
@@ -43,7 +44,7 @@ class ReproducerTest {
         Assertions.assertEquals(data.size(), count);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     @Order(3)
     void reproducer2() {
         var q = repo
